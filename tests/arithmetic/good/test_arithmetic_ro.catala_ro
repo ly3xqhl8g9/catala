@@ -1,0 +1,48 @@
+## Test operații aritmetice în limba română
+
+```catala
+declarație scop TestAritmetică:
+  context x conținut întreg
+  context y conținut întreg
+  context z conținut zecimal
+  context ieșire adunare conținut întreg
+  context ieșire diferență conținut întreg
+  context ieșire produs conținut întreg
+  context ieșire cât conținut zecimal
+  context ieșire negativ conținut întreg
+  context ieșire test_zecimal conținut zecimal
+
+scop TestAritmetică:
+  definiție x egal 15
+  definiție y egal 4
+  definiție z egal 2,5
+
+  definiție adunare egal x + y
+  definiție diferență egal x - y
+  definiție produs egal x * y
+  definiție cât egal x / y
+  definiție negativ egal -x
+  definiție test_zecimal egal z * 3,0
+```
+
+```catala-test-cli
+$ catala Typecheck --check-invariants
+┌─[RESULT]─
+│ All invariant checks passed
+└─
+┌─[RESULT]─
+│ Typechecking successful!
+└─
+```
+
+```catala-test-cli
+$ catala test-scope TestAritmetică
+┌─[RESULT]─ TestAritmetică ─
+│ adunare = 19
+│ cât = 3,75
+│ diferență = 11
+│ negativ = -15
+│ produs = 60
+│ test_zecimal = 7,5
+└─
+```

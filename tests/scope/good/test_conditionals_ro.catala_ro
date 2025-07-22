@@ -1,0 +1,50 @@
+## Test instrucțiuni condiționale în limba română
+
+```catala
+declarație scop TestCondițional:
+  context vârstă conținut întreg
+  context notă conținut zecimal
+  context ieșire categorie_vârstă conținut întreg
+  context ieșire rezultat_notă conținut întreg
+  context ieșire puncte_bonus conținut întreg
+
+scop TestCondițional:
+  definiție vârstă egal 25
+  definiție notă egal 7,5
+
+  definiție categorie_vârstă egal
+    dacă vârstă < 18 atunci 1
+    altfel dacă vârstă < 65 atunci 2
+    altfel 3
+
+  definiție rezultat_notă egal
+    dacă notă >= 9,0 atunci 4
+    altfel dacă notă >= 7,0 atunci 3
+    altfel dacă notă >= 5,0 atunci 2
+    altfel 1
+
+  definiție puncte_bonus egal
+    dacă categorie_vârstă = 2 și rezultat_notă = 3 atunci
+      10
+    altfel
+      0
+```
+
+```catala-test-cli
+$ catala Typecheck --check-invariants
+┌─[RESULT]─
+│ All invariant checks passed
+└─
+┌─[RESULT]─
+│ Typechecking successful!
+└─
+```
+
+```catala-test-cli
+$ catala test-scope TestCondițional
+┌─[RESULT]─ TestCondițional ─
+│ categorie_vârstă = 2
+│ puncte_bonus = 10
+│ rezultat_notă = 3
+└─
+```

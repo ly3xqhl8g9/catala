@@ -1,0 +1,40 @@
+## Test operații logice în limba română
+
+```catala
+declarație scop TestLogică:
+  context a conținut boolean
+  context b conținut boolean
+  context ieșire și_rezultat conținut boolean
+  context ieșire sau_rezultat conținut boolean
+  context ieșire nu_rezultat conținut boolean
+  context ieșire complex_rezultat conținut boolean
+
+scop TestLogică:
+  definiție a egal adevărat
+  definiție b egal fals
+
+  definiție și_rezultat egal a și b
+  definiție sau_rezultat egal a sau b
+  definiție nu_rezultat egal nu b
+  definiție complex_rezultat egal (a sau b) și nu (a și b)
+```
+
+```catala-test-cli
+$ catala Typecheck --check-invariants
+┌─[RESULT]─
+│ All invariant checks passed
+└─
+┌─[RESULT]─
+│ Typechecking successful!
+└─
+```
+
+```catala-test-cli
+$ catala test-scope TestLogică
+┌─[RESULT]─ TestLogică ─
+│ complex_rezultat = adevărat
+│ nu_rezultat = adevărat
+│ sau_rezultat = adevărat
+│ și_rezultat = fals
+└─
+```

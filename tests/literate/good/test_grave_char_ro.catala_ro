@@ -1,0 +1,54 @@
+## Textul legii ar trebui să poată conține caractere accent grav `` ` ``.
+
+Acesta este un bloc de text de lege care conține `.
+Aceasta permite:
+
+* utilizarea blocurilor de cod `Markdown` în fișierele `Catala`,
+
+* _evitarea_ caracterelor speciale precum `#` sau `>`,
+
+* utilizarea blocurilor de cod delimitate:
+
+```ocaml
+let () = print_endline "Salut lume!"
+```
+
+```catala
+#[test] declarație scop A:
+  context ieșire parsare_literară_este_ok conținut boolean
+
+scop A:
+  definiție parsare_literară_este_ok egal adevărat
+```
+
+Chiar și după blocul de cod `Catala`:
+
+```c
+int main(void) { return 0; }
+```
+
+
+
+```catala-test-cli
+$ catala Typecheck --check-invariants
+┌─[RESULT]─
+│ All invariant checks passed
+└─
+┌─[RESULT]─
+│ Typechecking successful!
+└─
+```
+
+```catala-test-cli
+$ catala test-scope A
+┌─[RESULT]─ A ─
+│ parsare_literară_este_ok = adevărat
+└─
+```
+
+```catala-test-cli
+$ catala test-scope A
+┌─[RESULT]─ A ─
+│ parsare_literară_este_ok = adevărat
+└─
+```
